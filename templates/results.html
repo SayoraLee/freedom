@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Freedom Project</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2f9f5b;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2f9f5b;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2b8c4f;
+        }
+
+        small {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .result-container {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px 2px #2f9f5b;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Results</h1>
+        {% for item in data %}
+            <div class="result-container" align="left">
+                <h3 align="center">{{ item.filename }}</h3>
+                <h3>Skills:</h3>
+                <ul>
+                    {% for skill in item.skills_found %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+                <p>Percentage: {{ item.matched_percent }}%</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
